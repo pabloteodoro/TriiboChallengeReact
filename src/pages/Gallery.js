@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
 import {
-  Grid,
   Container,
   Dialog,
   DialogContent,
   DialogTitle,
   IconButton,
   Typography,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import chapada from '../assets/chapada.jpg'
+import fernando from '../assets/fernando-de-noronha.jpg'
+import lencois from '../assets/lencois.jpg'
+import rosa from '../assets/praia-do-rosa.jpg'
+import rio from '../assets/rio-de-janeiro.jpg'
+import sp from '../assets/sao-paulo.jpg' 
 
-const images = [
-  'https://source.unsplash.com/800x600/?travel,beach',
-  'https://source.unsplash.com/800x600/?mountain',
-  'https://source.unsplash.com/800x600/?city',
-  'https://source.unsplash.com/800x600/?forest',
-  'https://source.unsplash.com/800x600/?desert',
-  'https://source.unsplash.com/800x600/?island',
+const itemData = [
+  {img: chapada, title: 'Chapada dos Veadeiros', author: 'Pablo Teodoro'},
+  {img: fernando, title: 'Fernando de Noronha', author: 'Pablo Teodoro'},
+  {img: lencois, title: 'Lençóis Maranhenses', author: 'Pablo Teodoro'},
+  {img: rosa, title: 'Praia do Rosa', author: 'Pablo Teodoro'},
+  {img: rio, title: 'Rio de Janeiro', author: 'Pablo Teodoro'},
+  {img: sp, title: 'São Paulo', author: 'Pablo Teodoro'}
+ 
+  
 ];
 
 const Gallery = () => {
@@ -33,23 +45,68 @@ const Gallery = () => {
     setSelectedImg('');
   };
 
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const isMd = useMediaQuery(theme.breakpoints.up('md'));
+
+  let cols = 1;
+  if(isXs) cols = 1;
+  else if(isSm) cols = 2;
+  else if(isMd) cols = 3;
+
   return (
-    <Container sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
+    <Container sx={{ mt: 4, mb: 4 }}>
+      <Typography variant="h4" gutterBottom textAlign="center" fontWeight="bold" sx={{ mb: 4 }}>
         🖼 Galeria de Imagens
       </Typography>
-      <Grid container spacing={2}>
-        {images.map((img, i) => (
-          <Grid item xs={12} sm={6} md={4} key={i}>
-            <img
-              src={{img}}
-              alt={`viagem-${i}`}
-              style={{ width: '100%', cursor: 'pointer', borderRadius: '8px' }}
-              onClick={() => handleOpen(img)}
-            />
-          </Grid>
-        ))}
-      </Grid>
+
+  <ImageList
+  variant="standard"
+  cols={cols}
+  gap={16}
+  sx={{
+    width: '100%',
+    maxWidth: '100%',
+    margin: '0 auto',
+    overflow: 'hidden',
+  }}
+>
+  {itemData.map((item, index) => (
+    <ImageListItem
+      key={index}
+      onClick={() => handleOpen(item.img)}
+      sx={{
+        cursor: 'pointer',
+        overflow: 'hidden',
+        borderRadius: '8px',
+        transition: 'transform 0.3s, box-shadow 0.3s',
+        '&:hover': {
+          transform: 'scale(1.02)',
+          boxShadow: 4,
+        },
+      }}
+    >
+      <img
+        src={item.img}
+        alt={item.title}
+        loading="lazy"
+        style={{
+          width: '100%',
+          height: 'auto',
+          display: 'block',
+          objectFit: 'cover',
+        }}
+      />
+      <ImageListItemBar
+        title={item.title}
+        subtitle={`por: ${item.author}`}
+        position="below"
+      />
+    </ImageListItem>
+  ))}
+</ImageList>
+
 
       <Dialog open={open} onClose={handleClose} maxWidth="md">
         <DialogTitle>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
-  Grid,
   Card,
   CardContent,
   Typography,
@@ -9,7 +8,10 @@ import {
   Container,
   CardActions,
   CircularProgress,
+  Grow,
+  Fade,
 } from '@mui/material';
+import Masonry from '@mui/lab/Masonry';
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
@@ -19,7 +21,7 @@ const Blog = () => {
     axios
       .get('https://dev.to/api/articles?tag=travel')
       .then((res) => {
-        setArticles(res.data.slice(0, 6));
+        setArticles(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -29,43 +31,75 @@ const Blog = () => {
   }, []);
 
   return (
-    <Container sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
+    <>
+      <Typography
+        variant="h4"
+        gutterBottom
+        textAlign="center"
+        fontWeight="bold"
+        sx={{ mt: 4, mb: 4 }}
+      >
         📰 Blog de Viagens
       </Typography>
 
-      {loading ? (
-        <Grid container justifyContent="center"><CircularProgress /></Grid>
-      ) : (
-        <Grid container spacing={3}>
-          {articles.map((article) => (
-            <Grid item xs={12} sm={6} md={4} key={article.id}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6">{article.title}</Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ my: 1 }}>
-                    {article.description?.slice(0, 100) || 'Sem descrição'}...
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {article.readable_publish_date}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+      <Fade in timeout={800}>
+        <Container
+          sx={{
+            mb: 6,
+            px: { xs: 2, sm: 4, md: 6 },
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderRadius: 2,
+            boxShadow: 3,
+          }}
+        >
+          {loading ? (
+            <CircularProgress sx={{ display: 'block', mx: 'auto', my: 6 }} />
+          ) : (
+            <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={4}>
+              {articles.slice(0, 6).map((article) => (
+                <Grow key={article.id} in timeout={500}>
+                  <Card
+                    sx={{
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                      '&:hover': {
+                        transform: 'scale(1.05)',
+                        boxShadow: 8,
+                      },
+                      minHeight: 220,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                    }}
                   >
-                    Leia mais
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      )}
-    </Container>
+                    <CardContent>
+                      <Typography variant="h6" fontWeight="bold" gutterBottom>
+                        {article.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {article.description?.slice(0, 120) || 'Sem descrição'}...
+                      </Typography>
+                    </CardContent>
+                    <CardActions sx={{ px: 2, pb: 2 }}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        href={article.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        color="primary"
+                      >
+                        Leia mais
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grow>
+              ))}
+            </Masonry>
+          )}
+        </Container>
+      </Fade>
+    </>
   );
 };
 
