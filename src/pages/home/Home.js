@@ -4,7 +4,7 @@ import {
   Typography,
   Box,
   Button,
-  useTheme,
+  useTheme, // useTheme e useMediaQuery hook para adptar layout
   useMediaQuery,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ import Testimonials from '../../components/Testimonials';
 const Home = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+// detecta se o usuario esta em um dispositivo mobile com  base no sm
   return (
     
     <Box
@@ -116,3 +116,26 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+// Documentaçao das dependências usadas:
+
+//Box: https://mui.com/material-ui/react-box/
+
+//Typography: https://mui.com/material-ui/react-typography/
+
+//Button: https://mui.com/material-ui/react-button/
+
+//Container: https://mui.com/material-ui/react-container/
+
+//useTheme: https://mui.com/material-ui/customization/theming/#using-the-theme-in-a-component
+
+//useMediaQuery: https://mui.com/material-ui/react-use-media-query/
+
+//Ícones: https://mui.com/material-ui/material-icons/
+
+

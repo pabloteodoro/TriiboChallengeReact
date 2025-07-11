@@ -30,22 +30,22 @@ const Footer = () => {
   } = useForm();
 
   const [openSuccess, setOpenSuccess] = React.useState(false);
-  const [openError, setOpenError] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false); // controle se os alertas de sucesso e erro devem aparecer
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') return;
     setOpenSuccess(false);
     setOpenError(false);
-  };
+  }; // fecha os alertas ao clicar fora
 
   const onSubmit = (data) => {
     try {
       console.log('Email cadastrado:', data);
-      reset();
-      setOpenSuccess(true);
+      reset(); // limpa os  campos do  form
+      setOpenSuccess(true); // mostra o  alerta de sucesso
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
-      setOpenError(true);
+      setOpenError(true); // mostra o alerta de erro
     }
   };
 
@@ -73,7 +73,7 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          {/* NEWSLETTER COM VALIDAÇÃO */}
+          {/* Newsletter Com Validação Regex */}
           <Grid item xs={12} md={6}>
             <Typography variant="h6" gutterBottom>
               Assine a newsletter
@@ -146,7 +146,7 @@ const Footer = () => {
           © 2025 por ViajeMais. Criado por Pablo Teodoro.
         </Typography>
 
-        {/* ALERTAS */}
+        {/* Alertas temporario */}
         <Snackbar
           open={openSuccess}
           autoHideDuration={4000}
@@ -159,7 +159,7 @@ const Footer = () => {
         </Snackbar>
 
         <Snackbar
-          open={openError}
+          open={openError} // mostra o alerta de sucesso ou erro
           autoHideDuration={4000}
           onClose={handleClose}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
@@ -174,3 +174,47 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+// Links da documentação usados:
+
+// MUI:
+//Box: https://mui.com/material-ui/react-box/
+
+//Container: https://mui.com/material-ui/react-container/
+
+//Typography: https://mui.com/material-ui/react-typography/
+
+//Grid: https://mui.com/material-ui/react-grid/
+
+//TextField: https://mui.com/material-ui/react-text-field/
+
+//Button: https://mui.com/material-ui/react-button/
+
+//Link: https://mui.com/material-ui/react-link/
+
+//Divider: https://mui.com/material-ui/react-divider/
+
+//Avatar: https://mui.com/material-ui/react-avatar/
+
+//InputAdornment: https://mui.com/material-ui/api/input-adornment/
+
+//Snackbar: https://mui.com/material-ui/react-snackbar/
+
+//Alert: https://mui.com/material-ui/react-alert/
+
+// React Hook Form:
+//useForm, register, handleSubmit, errors, reset:
+//https://react-hook-form.com/get-started
+
+//Ícones MUI:
+//EmailIcon: https://mui.com/material-ui/material-icons/?query=email
+
+//FacebookIcon: https://mui.com/material-ui/material-icons/?query=facebook
+
+//InstagramIcon: https://mui.com/material-ui/material-icons/?query=instagram
+
+//TwitterIcon: https://mui.com/material-ui/material-icons/?query=twitter
+
+//GitHubIcon: https://mui.com/material-ui/material-icons/?query=github
+
