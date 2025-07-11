@@ -49,12 +49,13 @@ npm test — roda os testes
 npm run eject — expõe configurações do create-react-app
 
 > Estrutura do Projeto
+
 📦 src/
-├── assets/              # Imagens e arquivos estáticos
-├── components/          # Componentes reutilizáveis (Header, Footer, Testimonials)
-├── pages/               # Páginas principais (Home, Blog, Contato, Galeria)
-├── App.jsx              # Componente principal com as rotas
-├── main.jsx             # Ponto de entrada da aplicação
+├── assets/ # Imagens e arquivos estáticos
+├── components/ # Componentes reutilizáveis (Header, Footer, Testimonials)
+├── pages/  # Páginas principais (Home, Blog, Contato, Galeria)
+├── App.jsx   # Componente principal com as rotas
+├── main.jsx # Ponto de entrada da aplicação
 
 >💡 Funcionalidades
 
@@ -72,10 +73,17 @@ npm run eject — expõe configurações do create-react-app
 
 ✅ Testemunhos de viajantes com layout animado
 
+## 🔗 Acesso ao Projeto
+
+**🌐 Deploy no Vercel**: https://triibo-challenge-react-k8y68sqyx-pabloteodoros-projects.vercel.app
+
+**📂 Repositório GitHub**: https://github.com/pabloteodoro/TriiboChallengeReact
+
 > 🧑‍💻 Desenvolvido por
-> Pablo Teodoro
-> GitHub: https://github.com/pabloteodoro
-> LinkedIn: https://www.linkedin.com/in/pabloteodoro/
+
+ Pablo Teodoro
+ GitHub: https://github.com/pabloteodoro
+ LinkedIn: https://www.linkedin.com/in/pabloteodoro/
 
 
 
