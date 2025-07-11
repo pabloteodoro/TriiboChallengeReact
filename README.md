@@ -74,6 +74,8 @@ src/
 
 ✅ Testemunhos de viajantes com layout animado
 
+---
+
 ## 🔗 Acesso ao Projeto
 
 **🌐 Deploy no Vercel**: https://triibo-challenge-react.vercel.app/
