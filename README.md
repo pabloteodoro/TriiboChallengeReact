@@ -50,11 +50,12 @@ npm run eject — expõe configurações do create-react-app
 
 > Estrutura do Projeto
 
-📦 src/
+src/
 ├── assets/ # Imagens e arquivos estáticos
-├── components/ # Componentes reutilizáveis (Header, Footer, Testimonials)
-├── pages/  # Páginas principais (Home, Blog, Contato, Galeria)
-├── App.jsx   # Componente principal com as rotas
+├── components/ # Componentes reutilizáveis (Header, Footer, Testimonials, etc.)
+├── pages/ # Páginas principais (Home, Blog, Contato, Galeria)
+├── App.jsx # Componente principal com as rotas da aplicação
+└── main.jsx # Ponto de entrada da aplicação Reactas
 ├── main.jsx # Ponto de entrada da aplicação
 
 >💡 Funcionalidades
