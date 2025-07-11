@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import Blog from '../pages/Blog';
-import Gallery from '../pages/Gallery';
-import Contact from '../pages/Contact';
+import Home from '../pages/home/Home';
+import Blog from '../pages/blog/Blog';
+import Gallery from '../pages/gallery/Gallery';
+import Contact from '../pages/contact/Contact';
 
 const AppRoutes = () => (
   <Routes>

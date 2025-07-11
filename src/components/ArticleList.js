@@ -1,10 +1,10 @@
-// src/components/ArticleList.js
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
+import React, { useEffect, useState } from 'react'; // react  e hooks para estgado e efeitos
+import axios from 'axios'; // requisiçao http conforme pedido
 import {
   Grid,
   Card,
-  CardContent,
+  CardContent, // componentes do mui material
   Typography,
   Button,
   CircularProgress,
@@ -16,21 +16,23 @@ const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { // useEffect para buscar os artigos via api quando o componente for montado
     axios
       .get('https://dev.to/api/articles?tag=travel')
       .then((response) => {
-        // Pega apenas os 6 primeiros artigos
+        // Pega apenas os 6 primeiros artigos(conforme pedido)
         setArticles(response.data.slice(0, 6));
         setLoading(false);
       })
       .catch((error) => {
         console.error('Erro ao buscar artigos:', error);
         setLoading(false);
-      });
-  }, []);
+      }); // em caso de  sucesso guarda os 6 primeiros artigos e desativa  o loading
+  }, []); // em caso de erro, mostra o erro no console e desativa o loading 
 
-  if (loading) {
+  
+
+  if (loading) { // enquanto carrega, retorna um container com spinner centralizado
     return (
       <Container sx={{ mt: 4, textAlign: 'center' }}>
         <CircularProgress />
@@ -43,8 +45,8 @@ const ArticleList = () => {
       <Typography variant="h4" component="h1" gutterBottom textAlign="center">
         📰 Blog de Viagens
       </Typography>
-
-      <Grid container spacing={3}>
+      
+      <Grid container spacing={3}> 
         {articles.map((article) => (
           <Grid item xs={12} sm={6} md={4} key={article.id}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -80,3 +82,23 @@ const ArticleList = () => {
 };
 
 export default ArticleList;
+
+
+// Links da documentação oficial do Mui para os componentes utilizados:
+//Container: https://mui.com/material-ui/react-container/
+//Grid: https://mui.com/material-ui/react-grid/
+
+//Card: https://mui.com/material-ui/react-card/
+
+//Typography: https://mui.com/material-ui/react-typography/
+
+//Button: https://mui.com/material-ui/react-button/
+
+//CircularProgress: https://mui.com/material-ui/react-progress/#circular
+
+// para usar o Axios:
+//Axios (para requisição HTTP)
+//https://axios-http.com/docs/intro
+
+//API pública Dev.to (para buscar artigos de viagem) fornecida pelo proprio teste tecnico
+//https://docs.dev.to/api/#tag/articles

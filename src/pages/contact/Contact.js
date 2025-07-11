@@ -58,7 +58,7 @@ const Contact = () => {
           fontWeight="bold"
           sx={{ mb: 4 }}
         >
-          📬 Fale Conosco
+           Fale Conosco
         </Typography>
 
         <Fade in={enviado}>

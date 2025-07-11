@@ -13,12 +13,12 @@ import {
   useTheme,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import chapada from '../assets/chapada.jpg'
-import fernando from '../assets/fernando-de-noronha.jpg'
-import lencois from '../assets/lencois.jpg'
-import rosa from '../assets/praia-do-rosa.jpg'
-import rio from '../assets/rio-de-janeiro.jpg'
-import sp from '../assets/sao-paulo.jpg' 
+import chapada from '../../assets/chapada.jpg'
+import fernando from '../../assets/fernando-de-noronha.jpg'
+import lencois from '../../assets/lencois.jpg'
+import rosa from '../../assets/praia-do-rosa.jpg'
+import rio from '../../assets/rio-de-janeiro.jpg'
+import sp from '../../assets/sao-paulo.jpg' 
 
 const itemData = [
   {img: chapada, title: 'Chapada dos Veadeiros', author: 'Pablo Teodoro'},
@@ -58,7 +58,7 @@ const Gallery = () => {
   return (
     <Container sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" gutterBottom textAlign="center" fontWeight="bold" sx={{ mb: 4 }}>
-        🖼 Galeria de Imagens
+         Galeria de Imagens
       </Typography>
 
   <ImageList

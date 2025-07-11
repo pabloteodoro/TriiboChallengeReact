@@ -4,9 +4,9 @@ import {
   Toolbar,
   Typography,
   IconButton,
-  Button,
-  Drawer,
-  List,
+  Button,          // importa componentes MUI para o header, botão, menu e etc.
+  Drawer,          // importa o Link e o useLocation do react-router-dom para navegação
+  List,       
   ListItem,
   ListItemText,
   Box,
@@ -16,20 +16,20 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useLocation } from 'react-router-dom';
 
-const navLinks = [
+const navLinks = [ //  navlinks é o array de objetos com os links dos menus
   { label: 'Início', path: '/' },
   { label: 'Blog', path: '/blog' },
-  { label: 'Galeria', path: '/galeria' },
+  { label: 'Galeria', path: '/galeria' }, 
   { label: 'Contato', path: '/contato' },
 ];
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // estado para abrir/fechar o import drawer no  mobile
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const location = useLocation();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // detecta se a tela é pequena
+  const location = useLocation(); // pega a rota atual
 
-  const toggleDrawer = () => setOpen(!open);
+  const toggleDrawer = () => setOpen(!open); // abre ou fecha  o drawe
 
   return (
     <>
@@ -50,7 +50,7 @@ const Header = () => {
             ViajeMais
           </Typography>
 
-          {isMobile ? (
+          {isMobile ? ( // se for mobile o isMobile for true mostra icone na lateral pra abrir o menu
             <>
               <IconButton edge="end" color="inherit" onClick={toggleDrawer}>
                 <MenuIcon />
@@ -101,3 +101,26 @@ const Header = () => {
 };
 
 export default Header;
+
+
+// Links das documentações oficiais usadas
+
+// AppBar: https://mui.com/material-ui/react-app-bar/
+
+//Toolbar: https://mui.com/material-ui/react-app-bar/#app-bar-with-a-primary-search-field
+
+//Typography: https://mui.com/material-ui/react-typography/
+
+//IconButton: https://mui.com/material-ui/react-button/#icon-buttons
+
+//Button: https://mui.com/material-ui/react-button/
+
+//Drawer: https://mui.com/material-ui/react-drawer/
+
+//List / ListItem: https://mui.com/material-ui/react-list/
+
+//useMediaQuery: https://mui.com/material-ui/react-use-media-query/
+
+//useTheme: https://mui.com/material-ui/customization/use-theme-hook/
+
+//MenuIcon: https://mui.com/material-ui/material-icons/#menu
