@@ -76,7 +76,7 @@ src/
 
 ## 🔗 Acesso ao Projeto
 
-**🌐 Deploy no Vercel**: https://triibo-challenge-react-k8y68sqyx-pabloteodoros-projects.vercel.app
+**🌐 Deploy no Vercel**: https://triibo-challenge-react.vercel.app/
 
 **📂 Repositório GitHub**: https://github.com/pabloteodoro/TriiboChallengeReact
 
